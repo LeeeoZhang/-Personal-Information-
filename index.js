@@ -2,7 +2,8 @@
 !function () {
     let animationList = {
         0: 'bounceInDown',
-        1: 'slideInLeft'
+        1: 'slideInLeft',
+        2: 'slideInRight'
     }
 
     class FullPage {
