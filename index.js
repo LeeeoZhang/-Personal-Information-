@@ -1,4 +1,10 @@
+
 !function () {
+    let animationList = {
+        0: 'bounceInDown',
+        1: 'slideInLeft'
+    }
+
     class FullPage {
         constructor (pageContainer, navContainer, duration) {
             this.pageContainer = pageContainer
@@ -16,8 +22,7 @@
                 this.gotoSection().then((targetIndex) => {
                     this.isAnimate = false
                     this.currentIndex = targetIndex || this.targetIndex
-                    if(targetIndex === 0) this.currentIndex = 0
-                    console.log(this.currentIndex, this.targetIndex)
+                    if (targetIndex === 0) this.currentIndex = 0
                 }).catch((error) => {
                     console.log(error)
                 })
@@ -28,7 +33,8 @@
         gotoSection (index) {
             let _this = this
             let targetIndex = index || this.targetIndex
-            if(index === 0) targetIndex = 0
+            let currentSection = document.querySelector(`section:nth-of-type(${targetIndex+1})`)
+            if (index === 0) targetIndex = 0
             return new Promise((resolve, reject) => {
                 if (this.isAnimate) {
                     return reject()
@@ -37,8 +43,10 @@
                 } else if (targetIndex >= this.pageContainer.children.length) {
                     return reject()
                 }
+                addAnimation(targetIndex)
                 this.isAnimate = true
                 this.pageContainer.children[0].addEventListener('transitionend', function callback () {
+                    removeAnimation(targetIndex)
                     _this.pageContainer.children[0].removeEventListener('transitionend', callback)
                     resolve(targetIndex)
                 })
@@ -54,11 +62,11 @@
                     let target = event.target
                     let navList = this.navContainer.querySelectorAll('ul>li')
                     let index = [].indexOf.call(navList, target)
-                    if(index === this.currentIndex) return
+                    if (index === this.currentIndex) return
                     this.gotoSection(index).then((targetIndex) => {
                         this.isAnimate = false
                         this.currentIndex = targetIndex || this.targetIndex
-                        if(targetIndex === 0) this.currentIndex = 0
+                        if (targetIndex === 0) this.currentIndex = 0
                     }).catch((error) => {
                         console.log(error)
                     })
@@ -67,6 +75,17 @@
         }
     }
 
+    function addAnimation (targetIndex) {
+        let content = document.querySelector(`section:nth-of-type(${targetIndex+1}) .content`)
+        content.classList.add('animated', animationList[targetIndex])
+        content.style.animationDelay = '.1s'
+    }
+
+    function removeAnimation (targetIndex) {
+        let content = document.querySelector(`section:nth-of-type(${targetIndex+1}) .content`)
+        content.classList.remove('animated',animationList[targetIndex])
+        content.style.animationDelay = ''
+    }
     new FullPage(document.querySelector('.page'), document.querySelector('#navContainer'))
 }()
 
