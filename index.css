@@ -20,7 +20,7 @@ section a {
 
 #navContainer {
     position: fixed;
-    bottom: 3%;
+    bottom: 0.2%;
     right: 50%;
     z-index: 10;
     transform: translateX(50%);
@@ -34,7 +34,7 @@ section a {
 #navContainer li {
     width: 1.5em;
     height: 1.5em;
-    background: #aaa;
+    background: #555;
     cursor: pointer;
     border-radius: 50%;
     margin: 0 1em;
@@ -44,6 +44,31 @@ section a {
 #navContainer > ul > li.active {
     width: 2em;
     height: 2em;
+}
+
+@media screen and (max-width: 768px) {
+    #navContainer {
+        bottom: 50%;
+        right: 3%;
+        z-index: 10;
+        transform: translateY(50%);
+    }
+
+    #navContainer > ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #navContainer li {
+        width: 1em;
+        height: 1em;
+        margin: 1em 0;
+    }
+
+    #navContainer > ul > li.active {
+        width: 1.5em;
+        height: 1.5em;
+    }
 }
 
 section:nth-of-type(odd) {
@@ -83,6 +108,17 @@ section:nth-of-type(1) h1 {
     letter-spacing: 0.2em;
 }
 
+@media screen and (max-width: 768px) {
+    section:nth-of-type(1) h1 {
+        font-size: 3em;
+    }
+}
+@media screen and (max-width: 550px) {
+    section:nth-of-type(1) h1 {
+        font-size: 2em;
+    }
+}
+
 section:nth-of-type(1) .contact {
     width: 13em;
     display: flex;
@@ -97,13 +133,13 @@ section:nth-of-type(1) .contact > a:hover {
 section:nth-of-type(2) > .content-wrap {
     position: absolute;
     width: 50%;
-    min-width: 40em;
     height: 100vh;
     left: 0;
     background: #aaa;
     opacity: .5;
     z-index: 10;
     padding: 1em 5em 0 5em;
+    overflow: auto;
 }
 
 section:nth-of-type(2) > .content-wrap > .content > h1 {
@@ -112,10 +148,47 @@ section:nth-of-type(2) > .content-wrap > .content > h1 {
     letter-spacing: .1em;
 }
 
+
 section:nth-of-type(2) > .content-wrap > .content p {
     font-size: 1.5em;
     margin-top: 1em;
 }
+@media screen and (max-width: 960px) {
+    section:nth-of-type(2) > .content-wrap > .content > h1 {
+        font-size: 8em;
+    }
+    section:nth-of-type(2) > .content-wrap > .content p {
+        font-size: 1.2em;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    section:nth-of-type(2) > .content-wrap {
+        position: absolute;
+        width: 100%;
+        height: 100vh;
+        background: #aaa;
+        opacity: .5;
+        z-index: 10;
+        padding: 1em 5em 0 5em;
+    }
+    section:nth-of-type(2) > .content-wrap > .content > h1 {
+        font-size: 10em;
+    }
+    section:nth-of-type(2) > .content-wrap > .content p {
+        font-size: 1.5em;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    section:nth-of-type(2) > .content-wrap > .content > h1 {
+        font-size: 5em;
+    }
+    section:nth-of-type(2) > .content-wrap > .content p {
+        font-size: 1em;
+    }
+}
+
 
 section:nth-of-type(2) > .question-mark {
     font-size: 30em;
@@ -139,13 +212,13 @@ section:nth-of-type(3) > .content-wrap {
     position: absolute;
     color: #000;
     width: 50%;
-    min-width: 40em;
     height: 100vh;
     right: 0;
     background: #fff;
     opacity: .5;
     z-index: 10;
     padding: 0 5em 0 5em;
+    overflow: auto;
 }
 
 section:nth-of-type(3) > .exclamatory-mark {
@@ -177,6 +250,43 @@ section:nth-of-type(3) > .content-wrap > .content p {
     margin: 1em 0 1em 0;
 }
 
+@media screen and (max-width: 960px) {
+    section:nth-of-type(3) > .content-wrap > .content > h1 {
+        font-size: 8em;
+    }
+    section:nth-of-type(3) > .content-wrap > .content p {
+        font-size: 1.2em;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    section:nth-of-type(3) > .content-wrap {
+        position: absolute;
+        color: #000;
+        width: 100%;
+        height: 100vh;
+        background: #fff;
+        opacity: .5;
+        z-index: 10;
+        padding: 0 5em 0 5em;
+    }
+    section:nth-of-type(3) > .content-wrap > .content > h1 {
+        font-size: 10em;
+    }
+    section:nth-of-type(3) > .content-wrap > .content p {
+        font-size: 1.5em;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    section:nth-of-type(3) > .content-wrap > .content > h1 {
+        font-size: 5em;
+    }
+    section:nth-of-type(3) > .content-wrap > .content p {
+        font-size: 1em;
+    }
+}
+
 section:nth-of-type(4) .content img {
     width: 30em;
 }
@@ -185,6 +295,17 @@ section:nth-of-type(4) .content p {
     font-size: 2em;
     text-align: center;
     margin: .5em 0;
+}
+
+@media screen and (max-width: 550px) {
+    section:nth-of-type(4) .content img {
+        width: 20em;
+    }
+    section:nth-of-type(4) .content p {
+        font-size: 1.5em;
+        text-align: center;
+        margin: .5em 0;
+    }
 }
 
 @keyframes jump {
