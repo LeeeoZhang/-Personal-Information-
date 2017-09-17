@@ -3,7 +3,8 @@
     let animationList = {
         0: 'bounceInDown',
         1: 'slideInLeft',
-        2: 'slideInRight'
+        2: 'slideInRight',
+        3: 'rubberBand'
     }
 
     class FullPage {
@@ -48,6 +49,7 @@
                 this.isAnimate = true
                 this.pageContainer.children[0].addEventListener('transitionend', function callback () {
                     removeAnimation(targetIndex)
+                    addActive(targetIndex)
                     _this.pageContainer.children[0].removeEventListener('transitionend', callback)
                     resolve(targetIndex)
                 })
@@ -86,6 +88,16 @@
         let content = document.querySelector(`section:nth-of-type(${targetIndex+1}) .content`)
         content.classList.remove('animated',animationList[targetIndex])
         content.style.animationDelay = ''
+    }
+
+    function addActive(targetIndex){
+        let liList = document.querySelectorAll('#navContainer>ul>li')
+        let targetLi = liList[targetIndex]
+        let siblings = targetLi.parentNode.children
+        Array.prototype.forEach.call(siblings, function(item){
+            item.classList.remove('active')
+        })
+        targetLi.classList.add('active')
     }
     new FullPage(document.querySelector('.page'), document.querySelector('#navContainer'))
 }()
