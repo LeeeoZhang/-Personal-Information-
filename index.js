@@ -4,7 +4,8 @@
         0: 'bounceInDown',
         1: 'slideInLeft',
         2: 'slideInRight',
-        3: 'rubberBand'
+        3: 'slideInLeft',
+        4: 'rubberBand'
     }
 
     class FullPage {
