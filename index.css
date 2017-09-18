@@ -149,7 +149,7 @@ section:nth-of-type(2) > .content-wrap > .content > h1 {
     letter-spacing: .1em;
 }
 section:nth-of-type(4) > .content-wrap > .content > h1 {
-    font-size: 8em;
+    font-size: 7em;
     font-variant: small-caps;
     letter-spacing: .1em;
 }
@@ -161,9 +161,11 @@ section:nth-of-type(4) > .content-wrap > .content p {
     margin: 1em 0;
 }
 @media screen and (max-width: 960px) {
-    section:nth-of-type(2) > .content-wrap > .content > h1,
-    section:nth-of-type(4) > .content-wrap > .content > h1{
+    section:nth-of-type(2) > .content-wrap > .content > h1 {
         font-size: 8em;
+    }
+    section:nth-of-type(4) > .content-wrap > .content > h1 {
+        font-size: 5em;
     }
     section:nth-of-type(2) > .content-wrap > .content p,
     section:nth-of-type(4) > .content-wrap > .content p{
